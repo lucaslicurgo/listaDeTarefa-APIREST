@@ -53,7 +53,28 @@ const login = async (req, res) => {
     }
 }
 
+const atualizarUsuario = async (req, res) => {
+    const { nome, email, senha } = req.body;
+
+    try {
+        const emailExistente = await knex('usuarios').where({ email }).first();
+
+        if (emailExistente) {
+            return res.status(400).json({ mensagem: mensagem.emailExistente })
+        }
+
+        const senhaCrypt = await bcrypt.hash(senha, 10);
+
+        atualizarPerfil = await knex('usuarios').where('id', req.usuario.id).update({ nome, email, senha: senhaCrypt });
+
+        return res.status(201).json();
+    } catch (error) {
+        return res.status(500).json({ mensagem: mensagem.erroInterno });
+    }
+}
+
 module.exports = {
     cadastrarUsuario,
-    login
+    login,
+    atualizarUsuario
 }
