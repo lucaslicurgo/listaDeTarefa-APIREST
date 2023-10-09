@@ -9,7 +9,7 @@ CREATE TABLE usuarios(
 
 CREATE TABLE listas (
     id SERIAL PRIMARY KEY,
-    usuario_id INTEGER NOT NULL REFERENCES usuario(id),
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id),
     titulo VARCHAR(1000) NOT NULL,
     descricao VARCHAR(2000),
     data TIMESTAMP DEFAULT NOW()
@@ -17,8 +17,8 @@ CREATE TABLE listas (
 
 CREATE TABLE tarefas (
     id SERIAL PRIMARY KEY,
-    usuario_id INTEGER NOT NULL REFERENCES usuario(id),
-    lista_id INTEGER NOT NULL REFERENCES lista(id),
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id),
+    lista_id INTEGER NOT NULL REFERENCES listas(id),
     titulo VARCHAR(1000) NOT NULL,
     descricao TEXT,
     status BOOLEAN NOT NULL DEFAULT false,

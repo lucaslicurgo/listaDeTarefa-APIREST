@@ -6,3 +6,5 @@ const validarDadosReq = joiSchema => async (req, res, next) => {
         return res.status(500).json({ mensagem: 'Erro interno do servidor' })
     }
 }
+
+module.exports = validarDadosReq;

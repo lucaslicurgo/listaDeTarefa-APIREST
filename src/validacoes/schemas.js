@@ -65,5 +65,6 @@ const schemaLista = Joi.object({
 
 module.exports = {
     schemaUsuario,
-    schemaLogin
+    schemaLogin,
+    schemaLista
 }

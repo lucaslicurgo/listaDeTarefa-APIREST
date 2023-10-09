@@ -1,12 +1,7 @@
 const knex = require('../infra/conexao');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const mensagem = {
-    erroInterno: 'Erro interno do servidor',
-    emailExistente: 'Esse e-mail já está cadastrado. Tente outro e-mail ou faça o login',
-    dadosInvalidos: 'Dados Inválidos'
-}
+const mensagem = require('../utilis/mensagem');
 
 const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body;
@@ -27,7 +22,8 @@ const cadastrarUsuario = async (req, res) => {
         return res.status(201).json(usuarioReturn);
 
     } catch (error) {
-        return res.status(500).json({ mensagem: mensagem.erroInterno });
+        console.log(error);
+        return res.status(500).json({ erro: mensagem.erroInterno });
     }
 }
 
