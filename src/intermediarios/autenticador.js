@@ -19,8 +19,6 @@ const autenticar = async (req, res, next) => {
             return res.status(401).json({ mensagem: "Token inválido! Por favor, faça login novamente." })
         }
 
-        console.log(tokenDecodificado.id)
-
         const usuarioExistente = await knex('usuarios').where({ id: tokenDecodificado.id }).first()
 
         if (!usuarioExistente) {

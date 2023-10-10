@@ -15,7 +15,7 @@ const cadastrarUsuario = async (req, res) => {
 
         const senhaCrypt = await bcrypt.hash(senha, 10);
 
-        const usuarioCadastrado = await knex('usuarios').insert({ nome, email, senha: senhaCrypt });
+        const usuarioCadastrado = await knex('usuarios').insert({ nome, email, senha: senhaCrypt }).returning(["id", "nome", "email"]);
 
         const { senha: _, ...usuarioReturn } = usuarioCadastrado[0];
 
@@ -53,10 +53,12 @@ const atualizarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body;
 
     try {
-        const emailExistente = await knex('usuarios').where({ email }).first();
+        if (email !== req.usuario.email) {
+            const emailExistente = await knex('usuarios').where({ email }).first();
 
-        if (emailExistente) {
-            return res.status(400).json({ mensagem: mensagem.emailExistente })
+            if (emailExistente) {
+                return res.status(400).json({ mensagem: mensagem.emailExistente })
+            }
         }
 
         const senhaCrypt = await bcrypt.hash(senha, 10);
