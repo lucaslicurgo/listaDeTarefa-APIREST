@@ -20,7 +20,6 @@ const schemaUsuario = Joi.object({
         }),
 
     senha: Joi.string()
-        // .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')), //seria um plus, mas não sei se as próximas sprints vão pedir algo do tipo...
         .min(3)
         .required()
         .messages({
@@ -41,7 +40,6 @@ const schemaLogin = Joi.object({
         }),
 
     senha: Joi.string()
-        // .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')), //seria um plus, mas não sei se as próximas sprints vão pedir algo do tipo...
         .min(3)
         .required()
         .messages({
@@ -68,8 +66,66 @@ const schemaLista = Joi.object({
         })
 })
 
+const schemaTarefas = Joi.object({
+    titulo: Joi.string()
+        .min(3)
+        .max(1000).
+        required()
+        .messages({
+            'any.required': 'É necessário informar o título.',
+            'string.min': 'O título não pode ter menos de 3 caracteres.',
+            'strin.max': 'O título não pode ter mais de 1000 caracteres.'
+        }),
+    descricao: Joi.string()
+        .min(5)
+        .messages({
+            'string.min': 'A descrição não pode ter menos de 5 caracteres.'
+        }),
+    status: Joi.boolean()
+        .required()
+        .messages({
+            'any.required': 'É necessário informar o status da tarefa'
+        }),
+    data_conclusao: Joi.date()
+        .iso()
+        .required()
+        .messages({
+            'date-iso': 'A data de conclusão deve estar no formato ISO(AAAA-MM-DD).',
+            'any.required': 'É necessário informar a data de conclusão.'
+        })
+
+})
+
+const schemaAttTarefas = Joi.object({
+    titulo: Joi.string()
+        .min(3)
+        .max(1000)
+        .messages({
+            'string.min': 'O título não pode ter menos de 3 caracteres.',
+            'strin.max': 'O título não pode ter mais de 1000 caracteres.'
+        }),
+    descricao: Joi.string()
+        .min(5)
+        .messages({
+            'string.min': 'A descrição não pode ter menos de 5 caracteres.'
+        }),
+    status: Joi.boolean()
+        .required()
+        .messages({
+            'any.required': 'É necessário informar o status da tarefa'
+        }),
+    data_conclusao: Joi.date()
+        .iso()
+        .messages({
+            'date-iso': 'A data de conclusão deve estar no formato ISO(AAAA-MM-DD).'
+        })
+
+})
+
 module.exports = {
     schemaUsuario,
     schemaLogin,
-    schemaLista
+    schemaLista,
+    schemaTarefas,
+    schemaAttTarefas
 }

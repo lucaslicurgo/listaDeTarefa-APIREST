@@ -1,5 +1,4 @@
 const knex = require('../infra/conexao');
-const jwt = require('jsonwebtoken');
 const mensagem = require('../utilis/mensagem');
 
 const cadastrarLista = async (req, res) => {
@@ -54,11 +53,29 @@ const atualizarLista = async (req, res) => {
             return res.status(404).json({ mensagem: mensagem.listaNao })
         }
 
-        await knex('listas').where({ id }).insert({ titulo, descricao });
+        await knex('listas').where({ id }).update({ titulo, descricao });
 
         return res.status(201).json();
     } catch (error) {
-        return res.status(500).json(mensagem.erroInterno)
+        return res.status(500).json({ erro: mensagem.erroInterno });
+    }
+}
+
+const deletarLista = async (req, res) => {
+    const { id } = req.params;
+    usuario = req.usuario;
+
+    try {
+        const listaValidada = await knex('listas').where({ id, usuario_id: usuario.id });
+
+        if (listaValidada < 1) {
+            return res.status(404).json({ mensagem: mensagem.listaNao });
+        }
+
+        await knex('listas').where({ id }).del();
+        return res.status(200).json();
+    } catch (error) {
+        return res.status(500).json({ erro: mensagem.erroInterno });
     }
 }
 
@@ -66,6 +83,7 @@ module.exports = {
     cadastrarLista,
     listaDoUsuario,
     detalharLista,
-    atualizarLista
+    atualizarLista,
+    deletarLista
 
 }
