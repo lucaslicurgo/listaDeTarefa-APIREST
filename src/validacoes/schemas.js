@@ -54,12 +54,17 @@ const schemaLogin = Joi.object({
 const schemaLista = Joi.object({
     titulo: Joi.string()
         .min(3)
-        .max(100)
+        .max(1000)
         .required()
         .messages({
             'any.required': 'É necessário informar o título.',
             'string.min': 'O título não pode ter menos que 3 caracteres.',
-            'strin.max': 'O título não pode ter mais que 100 caracteres.'
+            'strin.max': 'O título não pode ter mais que 1000 caracteres.'
+        }),
+    descricao: Joi.string()
+        .max(2000)
+        .messages({
+            'strin.max': 'A descrição não pode ter mais de 2000 caracteres'
         })
 })
 

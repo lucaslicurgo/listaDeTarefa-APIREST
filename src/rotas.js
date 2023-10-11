@@ -17,5 +17,6 @@ rotas.put('/usuario', validarDadosReq(schemas.schemaUsuario), usuario.atualizarU
 rotas.post('/lista', validarDadosReq(schemas.schemaLista), lista.cadastrarLista);
 rotas.get('/lista', lista.listaDoUsuario);
 rotas.get('/lista/:id', lista.detalharLista);
+rotas.put('/lista/:id', validarDadosReq(schemas.schemaLista), lista.atualizarLista);
 
 module.exports = rotas;

@@ -30,8 +30,8 @@ const autenticar = async (req, res, next) => {
         req.usuario = usuario
 
         next()
-    } catch (erro) {
-        return res.status(500).json({ mensagem: "Erro interno do servidor." })
+    } catch (error) {
+        return res.status(500).json({ erro: "Erro interno do servidor." })
     }
 }
 
