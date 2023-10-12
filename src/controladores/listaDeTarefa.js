@@ -73,7 +73,7 @@ const deletarLista = async (req, res) => {
         }
 
         await knex('listas').where({ id }).del();
-        return res.status(200).json();
+        return res.status(200).json({ mensagem: mensagem.delete });
     } catch (error) {
         return res.status(500).json({ erro: mensagem.erroInterno });
     }

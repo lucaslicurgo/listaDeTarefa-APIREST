@@ -3,7 +3,8 @@ const mensagem = {
     emailExistente: 'Esse e-mail já está cadastrado. Tente outro e-mail ou faça o login',
     dadosInvalidos: 'Dados Inválidos',
     listaNao: 'Lista não encontrada, tente novamente',
-    tarefaNao: 'Tarefa não encontrada, tente novamante.'
+    tarefaNao: 'Tarefa não encontrada, tente novamante.',
+    delete: 'Deletado'
 }
 
 module.exports = mensagem;

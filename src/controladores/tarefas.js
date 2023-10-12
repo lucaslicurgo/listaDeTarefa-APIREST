@@ -77,10 +77,28 @@ const atualizarTarefa = async (req, res) => {
         return res.status(500).json({ erro: mensagem.erroInterno });
     }
 }
+
+const deletarTarefa = async (req, res) => {
+    const { id, lista_id } = req.params;
+    usuario_id = req.usuario.id;
+
+    try {
+        const tarefa = await knex('tarefas').where({ id, lista_id, usuario_id });
+
+        if (tarefa.length < 1) {
+            return res.status(404).json({ mensagem: mensagem.tarefaNao })
+        }
+
+        await knex('tarefas').where({ id }).del();
+        return res.status(201).json({ mensagem: mensagem.delete })
+    } catch (error) {
+        return res.status(500).json({ erro: mensagem.erroInterno });
+    }
+}
 module.exports = {
     cadastrarTarefa,
     tarefasDoUsuario,
     detalharTarefa,
-    atualizarTarefa
-
+    atualizarTarefa,
+    deletarTarefa
 }
