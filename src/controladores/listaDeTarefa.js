@@ -72,7 +72,9 @@ const deletarLista = async (req, res) => {
             return res.status(404).json({ mensagem: mensagem.listaNao });
         }
 
+        await knex('tarefas').where({ lista_id: id}).del();
         await knex('listas').where({ id }).del();
+
         return res.status(200).json({ mensagem: mensagem.delete });
     } catch (error) {
         return res.status(500).json({ erro: mensagem.erroInterno });
