@@ -120,7 +120,8 @@ npm run dev
 ‼️ ATENÇÃO: É importante observar que, ao excluir uma lista de tarefas, todas as tarefas incluídas nela também serão excluídas. 
 
 ### Cadastrar Tarefas
-`(POST) http://localhost:3000/listas/lista_id/tarefas`
+`(POST) http://localhost:3000/listas/:lista_id/tarefas`
+
 ➡️ Descrição: Esta solicitação é usada para cadastrar tarefas na lista de tarefa
 
 ⬇️ Exemplo de body no formato JSON ⬇️
@@ -133,5 +134,65 @@ npm run dev
     "data_conclusao": "2023-12-25"
 }
 ```
+### Tarefas 
+`(GET) http://localhost:3000/listas/:lista_id/tarefas`
 
+➡️ Descrição: Esta solicitação é usada para que o usuário visualize todas as suas tarefas daquela lista.
 
+### Detalhar Tarefa
+`(GET) http://localhost:3000/listas/:lista_id/tarefas/:id`
+
+➡️ Descrição: Esta solicitação é usada para detalhar uma tarefa específica com base no seu ID.
+
+### Atualizar Tarefa
+`(PUT) http://localhost:3000/listas/:lista_id/tarefas/:id`
+
+➡️ Descrição: Esta rota permite ao usuário atualizar sua tarefa com base no seu ID
+
+⬇️ Exemplo de body no formato JSON ⬇️
+
+```JSON
+{
+    "titulo": "Estudar Ruby",
+    "descricao": "Estudar seus tipos de dados",
+    "status": false,
+    "data_conclusao": "2023-12-25"
+}
+```
+### Excluir Tarefa 
+`(DELETE) http://localhost:3000/listas/:lista_id/tarefas/:id`
+
+➡️ Descrição: Esta solicitação é usada para excluir a tarefa específica com base no seu ID.
+
+## :stop_sign:  IMPORTANTE :stop_sign:
+Para garantir a segurança das suas informações e o acesso às funcionalidades protegidas, é necessário fornecer um token de autenticação válido em todas as rotas que estão abaixo da rota de login.
+
+- **Token de Autenticação:** O token de autenticação é fornecido como resposta à rota de login. Exemplo de token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjk4NTE4ODAzLCJleHAiOjE2OTg1NDc2MDN9.LybHBeyUbEfITbQdIrlrTy0geVkE42fRGdCHSzvwSQw`
+- **Duração do Token:** O token de autenticação é válido por um período de 8 horas a partir do momento em que é gerado. Após esse período, o token expirará e você precisará fazer login novamente para obter um novo token.
+- **Inclusão do Token:** Para acessar as rotas protegidas, você deve incluir o token de autenticação no cabeçalho (Header) de suas requisições HTTP, na propriedade "Authorization" do objeto Headers.
+
+## :man_technologist: Estrutura do Projeto
+- `controladores`
+- `intermediarios`
+- `rotas.js`
+- `index.js`
+- `infra`
+- `utils`
+- `validacoes`
+- `.env`
+
+## :bowtie: Informações adicionais
+Além da funcionalidade principal de gerenciamento de listas de tarefas por meio de uma API REST, este projeto incorpora diversas práticas e conceitos avançados de desenvolvimento de software:
+
+- Autenticação de Usuário
+- Criptografia de Senhas com Hash
+- Manipulação de Banco de Dados
+- Segurança em Geral
+
+## :electron: Tecnologias 
+JAVASCRIPT | NODE.JS | POSTGRES | EXPRESS.JS | API REST 
+:------:  | :------: | :------: | :------: | :------:
+<img align="center" alt="JavaScript" height="40em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/0e01b699-bb38-4fe4-803a-d8927926ecd6" /> | <img align="center" alt="Node" height="45em" width="50em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/32d12d0d-f886-4973-875c-db5202606b63" /> | <img align="center" alt="Postegres" height="40em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/9f1ce95b-f8a7-46a2-9827-7c3f8bb47ca8" /> | <img align="center" alt="Express" height="35em" width="60em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/5a00fb36-21dc-410c-9282-f11d577dbec6" /> | <img align="center" alt="Api-Rest" height="35em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/a2a32005-bccc-4a78-a8fc-a7e18152a362" />
+
+## :bearded_person: Autor
+> Lucas Licurgo
