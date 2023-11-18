@@ -33,7 +33,7 @@ npm run dev
 
 > Para autenticação, adicione o token de acesso (Recebido após requisição de login) na propriedade autorizhation do cabeçalho (Header).
 
-> Certifique-se de enviar dados no formato JSON ao fazer requisiç~es que exigem corpo (request body).
+> Certifique-se de enviar dados no formato JSON ao fazer requisições que exigem corpo (request body).
 
 ## :compass: Sobre as Rotas
 ### Cadastro do usuário
