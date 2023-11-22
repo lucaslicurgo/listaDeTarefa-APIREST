@@ -195,4 +195,5 @@ JAVASCRIPT | NODE.JS | POSTGRES | EXPRESS.JS | API REST
 <img align="center" alt="JavaScript" height="40em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/0e01b699-bb38-4fe4-803a-d8927926ecd6" /> | <img align="center" alt="Node" height="45em" width="50em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/32d12d0d-f886-4973-875c-db5202606b63" /> | <img align="center" alt="Postegres" height="40em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/9f1ce95b-f8a7-46a2-9827-7c3f8bb47ca8" /> | <img align="center" alt="Express" height="35em" width="60em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/5a00fb36-21dc-410c-9282-f11d577dbec6" /> | <img align="center" alt="Api-Rest" height="35em" width="40em" src="https://github.com/andressa-silvaa/BankAPI-Node/assets/120581625/a2a32005-bccc-4a78-a8fc-a7e18152a362" />
 
 ## :bearded_person: Autor
+<img src="https://avatars.githubusercontent.com/u/124942268?v=4" height="110em" width="110em"/>
 > Lucas Licurgo
